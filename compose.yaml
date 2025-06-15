@@ -1,0 +1,49 @@
+version: "3.8"
+
+networks:
+  net:
+    driver: bridge
+
+services:
+  postgres:
+    container_name: ebanking-postgres
+    image: ankane/pgvector:latest
+    environment:
+      - POSTGRES_DB=ebanking
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - net
+
+  backend:
+    container_name: ebanking-backend
+    image: ebank/ebank:1.0.0
+    depends_on:
+      - postgres
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://ebanking-postgres:5432/ebanking
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      JWT_SECRET: 8970B93C8970B93C8970B93C8970B93C8970B93C8970B93C8970B93C8970B93C
+    networks:
+      - net
+
+  frontend:
+    container_name: ebanking-frontend
+    image: ebank/ebank-ui:1.0.0
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
+    networks:
+      - net
+
+volumes:
+  postgres-data:
+    driver: local

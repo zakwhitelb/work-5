@@ -1,0 +1,59 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ebanking-backend
+  labels:
+    app: ebanking-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ebanking-backend
+  template:
+    metadata:
+      labels:
+        app: ebanking-backend
+    spec:
+      containers:
+        - name: backend
+          image: sami/ebank-backend:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:postgresql://ebanking-postgres:5432/ebanking"
+            - name: SPRING_DATASOURCE_USERNAME
+              value: "postgres"
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: "postgres"
+            - name: JWT_SECRET
+              value: "8970B93C8970B93C8970B93C8970B93C8970B93C8970B93C8970B93C"
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 20
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ebanking-backend
+spec:
+  type: ClusterIP
+  selector:
+    app: ebanking-backend
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+      name: http
+

@@ -1,0 +1,105 @@
+<div class="container-fluid p-4">
+  <!-- Statistiques générales -->
+  <div class="row g-4 mb-4">
+    <div class="col-xl-3 col-md-6">
+      <div class="card stat-card border-0 shadow-sm h-100">
+        <div class="card-body">
+          <div class="d-flex align-items-center">
+            <div class="stat-icon bg-primary bg-opacity-10 rounded-3 p-3 me-3">
+              <i class="bi bi-people-fill text-primary fs-4"></i>
+            </div>
+            <div>
+              <h6 class="stat-label text-muted mb-1">Total Clients</h6>
+              <h3 class="stat-value mb-0">{{totalCustomers}}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+      <div class="card stat-card border-0 shadow-sm h-100">
+        <div class="card-body">
+          <div class="d-flex align-items-center">
+            <div class="stat-icon bg-success bg-opacity-10 rounded-3 p-3 me-3">
+              <i class="bi bi-wallet2 text-success fs-4"></i>
+            </div>
+            <div>
+              <h6 class="stat-label text-muted mb-1">Total Comptes</h6>
+              <h3 class="stat-value mb-0">{{totalAccounts}}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+      <div class="card stat-card border-0 shadow-sm h-100">
+        <div class="card-body">
+          <div class="d-flex align-items-center">
+            <div class="stat-icon bg-info bg-opacity-10 rounded-3 p-3 me-3">
+              <i class="bi bi-cash-stack text-info fs-4"></i>
+            </div>
+            <div>
+              <h6 class="stat-label text-muted mb-1">Solde Total</h6>
+              <h3 class="stat-value mb-0">{{totalBalance | currency:'MAD'}}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+      <div class="card stat-card border-0 shadow-sm h-100">
+        <div class="card-body">
+          <div class="d-flex align-items-center">
+            <div class="stat-icon bg-warning bg-opacity-10 rounded-3 p-3 me-3">
+              <i class="bi bi-graph-up text-warning fs-4"></i>
+            </div>
+            <div>
+              <h6 class="stat-label text-muted mb-1">Total Transactions</h6>
+              <h3 class="stat-value mb-0">{{totalTransactions}}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Graphiques -->
+  <div class="row g-4">
+    <!-- Distribution des types de comptes -->
+    <div class="col-xl-4">
+      <div class="card border-0 shadow-sm h-100">
+        <div class="card-header bg-transparent border-0 pt-4">
+          <h5 class="card-title mb-0">
+            <i class="bi bi-pie-chart-fill text-primary me-2"></i>
+            Distribution des Types de Comptes
+          </h5>
+        </div>
+        <div class="card-body">
+          <div class="chart-pie">
+            <canvas id="accountTypeChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tendance des transactions -->
+    <div class="col-xl-8">
+      <div class="card border-0 shadow-sm h-100">
+        <div class="card-header bg-transparent border-0 pt-4">
+          <h5 class="card-title mb-0">
+            <i class="bi bi-graph-up text-primary me-2"></i>
+            Tendance des Transactions
+          </h5>
+        </div>
+        <div class="card-body">
+          <div class="chart-line">
+            <canvas id="transactionTrendChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

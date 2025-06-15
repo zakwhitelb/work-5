@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ebanking-frontend
+  labels:
+    app: ebanking-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ebanking-frontend
+  template:
+    metadata:
+      labels:
+        app: ebanking-frontend
+    spec:
+      containers:
+        - name: frontend
+          image: sami/ebank-frontend:latest
+          ports:
+            - containerPort: 80
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ebanking-frontend
+spec:
+  type: ClusterIP
+  selector:
+    app: ebanking-frontend
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      name: http

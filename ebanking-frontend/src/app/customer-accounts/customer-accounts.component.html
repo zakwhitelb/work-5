@@ -1,0 +1,42 @@
+<div class="container mt-4">
+  <div class="row">
+    <!-- Informations Client -->
+    <div class="col-md-5">
+      <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+          <h4><i class="bi bi-person-circle me-2"></i>Informations Client</h4>
+        </div>
+        <div class="card-body">
+          <div *ngIf="customer; else noCustomer">
+            <div class="mb-3">
+              <h5 class="text-muted">Identifiant Client</h5>
+              <h3>{{customer.id}}</h3>
+            </div>
+            <div class="mb-3">
+              <h5 class="text-muted">Nom</h5>
+              <h3>{{customer.name}}</h3>
+            </div>
+            <div class="mb-3">
+              <h5 class="text-muted">Email</h5>
+              <p class="fs-5">{{customer.email}}</p>
+            </div>
+          </div>
+          <ng-template #noCustomer>
+            <div class="alert alert-warning">
+              <i class="bi bi-exclamation-triangle me-2"></i>
+              Les informations du client n'ont pas été chargées correctement.
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+    </div>
+
+
+  <!-- Bouton de retour -->
+  <div class="mt-4">
+    <button class="btn btn-secondary" [routerLink]="['/admin/customers']">
+      <i class="bi bi-arrow-left me-2"></i>Retour à la liste des clients
+    </button>
+  </div>
+</div>

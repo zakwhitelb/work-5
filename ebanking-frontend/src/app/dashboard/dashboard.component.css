@@ -1,0 +1,117 @@
+.border-left-primary {
+  border-left: 0.25rem solid #4e73df !important;
+}
+
+.border-left-success {
+  border-left: 0.25rem solid #1cc88a !important;
+}
+
+.border-left-info {
+  border-left: 0.25rem solid #36b9cc !important;
+}
+
+.border-left-warning {
+  border-left: 0.25rem solid #f6c23e !important;
+}
+
+.chart-pie {
+  position: relative;
+  height: 15rem;
+}
+
+.chart-line {
+  position: relative;
+  height: 15rem;
+}
+
+.text-xs {
+  font-size: .7rem;
+}
+
+.text-gray-300 {
+  color: #dddfeb !important;
+}
+
+.text-gray-800 {
+  color: #5a5c69 !important;
+}
+
+.stat-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.stat-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.card {
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.card-header {
+  padding: 1.25rem 1.5rem;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.chart-pie {
+  position: relative;
+  height: 300px;
+  padding: 1rem;
+}
+
+.chart-line {
+  position: relative;
+  height: 300px;
+  padding: 1rem;
+}
+
+/* Couleurs personnalisées pour les graphiques */
+:root {
+  --chart-primary: #4e73df;
+  --chart-success: #1cc88a;
+  --chart-info: #36b9cc;
+  --chart-warning: #f6c23e;
+  --chart-danger: #e74a3b;
+}
+
+/* Animation de chargement */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stat-card, .card {
+  animation: fadeIn 0.5s ease-out;
+}
